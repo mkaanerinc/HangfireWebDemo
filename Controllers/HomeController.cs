@@ -34,6 +34,33 @@ namespace HangfireWebDemo.Controllers
             return View();
         }
 
+        public IActionResult PictureSave()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PictureSave(IFormFile picture)
+        {
+            string newFileName = String.Empty;
+
+            if (picture != null && picture.Length > 0)
+            {
+                newFileName = Guid.NewGuid().ToString() + Path.GetExtension(picture.FileName);
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot/pictures",newFileName);
+
+                using (var stream = new FileStream(path,FileMode.Create))
+                {
+                    await picture.CopyToAsync(stream);
+                }
+
+                string jobId = DelayedJobs.AddWatermarkJob(newFileName,"www.watermark.com");
+            }
+
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
