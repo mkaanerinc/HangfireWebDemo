@@ -21,6 +21,8 @@ namespace HangfireWebDemo.Controllers
 
         public IActionResult Privacy()
         {
+            RecurringJobs.ReportingJob();
+
             return View();
         }
 
@@ -56,6 +58,8 @@ namespace HangfireWebDemo.Controllers
                 }
 
                 string jobId = DelayedJobs.AddWatermarkJob(newFileName,"www.watermark.com");
+
+                ContinuationsJobs.WriteWatermarkStatusJob(jobId,newFileName);
             }
 
             return View();
