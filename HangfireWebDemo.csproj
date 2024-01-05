@@ -10,7 +10,10 @@
     <PackageReference Include="Hangfire.AspNetCore" Version="1.8.7" />
     <PackageReference Include="Hangfire.Core" Version="1.8.7" />
     <PackageReference Include="Hangfire.SqlServer" Version="1.8.7" />
+    <PackageReference Include="MailKit" Version="4.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://json.schemastore.org/appsettings.json" /></VisualStudio></ProjectExtensions>

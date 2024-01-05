@@ -1,3 +1,4 @@
+using HangfireWebDemo.BackgroundJobs;
 using HangfireWebDemo.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -20,6 +21,16 @@ namespace HangfireWebDemo.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+
+        public IActionResult SignUp()
+        {
+            // User sign up the our site. After that our EmailSender Job execute.
+            
+            FireAndForgetJobs.EmailSendToUserJob("User Id","Sitemize hoþgeldiniz...");
+
             return View();
         }
 

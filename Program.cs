@@ -1,4 +1,5 @@
 using Hangfire;
+using HangfireWebDemo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,8 @@ builder.Services.AddHangfire(config =>
 });
 
 builder.Services.AddHangfireServer();
+
+builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 var app = builder.Build();
 
